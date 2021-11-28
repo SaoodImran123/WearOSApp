@@ -2,11 +2,13 @@ package com.example.wearosapp;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
 import android.widget.TextView;
 
 import com.example.wearosapp.databinding.ActivityMainBinding;
 
-public class MainActivity extends Activity {
+public class MainActivity extends Activity{
 
     private TextView mTextView;
     private ActivityMainBinding binding;
@@ -19,5 +21,19 @@ public class MainActivity extends Activity {
         setContentView(binding.getRoot());
 
         //mTextView = binding.text;
+        View clock = findViewById(R.id.analogClock);
+        clock.setOnTouchListener(new OnSwipeTouchListener(this) {
+            @Override
+            public void onSwipeLeft() {
+                //Do stuff
+                Log.d("DEBUG MainActivity", "Swiped Left");
+            }
+
+            @Override
+            public void onSwipeRight(){
+                //Do stuff
+                Log.d("DEBUG MainActivity", "Swiped Right");
+            }
+        });
     }
 }
