@@ -1,6 +1,7 @@
 package com.example.wearosapp;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -27,6 +28,11 @@ public class MainActivity extends Activity{
             public void onSwipeLeft() {
                 //Do stuff
                 Log.d("DEBUG MainActivity", "Swiped Left");
+
+                Intent intent = new Intent(MainActivity.this, Timer.class);
+                startActivity(intent);
+                finish();
+
             }
 
             @Override
