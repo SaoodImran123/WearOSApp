@@ -81,6 +81,19 @@ public class Alarm extends Activity {
             }
         });
 
+        //Disable alarm if clock time changed
+        TimePicker alarmTimePicker = findViewById(R.id.alarmTimePicker);
+        alarmTimePicker.setOnTimeChangedListener(new TimePicker.OnTimeChangedListener() {
+            @Override
+            public void onTimeChanged(TimePicker view, int hourOfDay, int minute) {
+                if (alarmManager != null && pendingIntent != null){
+                    alarmManager.cancel(pendingIntent);
+                    alarmSet = false;
+                    toggleAlarmButton(false);
+                }
+            }
+        });
+
         //Handle button toggle
         ToggleButton toggleButton = findViewById(R.id.alarmToggle);
         toggleButton.setOnClickListener(new View.OnClickListener() {
