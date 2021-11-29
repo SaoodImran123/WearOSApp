@@ -1,8 +1,10 @@
 package com.example.wearosapp;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -26,6 +28,27 @@ public class Timer extends Activity {
         btnReset = findViewById(R.id.resetBtn);
         timer = findViewById(R.id.timerText);
         runTimer();
+
+        //Run new activity on swipe event
+        View clock = findViewById(R.id.TimerLayout);
+        clock.setOnTouchListener(new OnSwipeTouchListener(this) {
+            @Override
+            public void onSwipeLeft() {
+                //Do stuff
+                Log.d("DEBUG Timer", "Swiped Left");
+
+                Intent intent = new Intent(Timer.this, Alarm.class);
+                startActivity(intent);
+                finish();
+
+            }
+
+            @Override
+            public void onSwipeRight(){
+                //Do stuff
+                Log.d("DEBUG Timer", "Swiped Right");
+            }
+        });
     }
 
 

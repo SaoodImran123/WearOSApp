@@ -13,6 +13,9 @@
         android:supportsRtl="true"
         android:theme="@android:style/Theme.DeviceDefault">
         <activity
+            android:name=".Alarm"
+            android:exported="false" />
+        <activity
             android:name=".Timer"
             android:exported="false" />
 
