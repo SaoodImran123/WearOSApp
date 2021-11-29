@@ -38,6 +38,7 @@ public class Timer extends Activity {
                 Log.d("DEBUG Timer", "Swiped Left");
 
                 Intent intent = new Intent(Timer.this, Alarm.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
                 startActivity(intent);
                 finish();
 
