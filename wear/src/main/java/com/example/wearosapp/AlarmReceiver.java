@@ -25,6 +25,10 @@ public class AlarmReceiver extends BroadcastReceiver {
 
         Log.d("DEBUG AlarmReceiver", "Alarm went off");
 
+        Alarm inst = Alarm.instance();
+        inst.toggleAlarmButton(false);
+
+
         //this will sound the alarm tone
         //this will sound the alarm once, if you wish to
         //raise alarm in loop continuously then use MediaPlayer and setLooping(true)

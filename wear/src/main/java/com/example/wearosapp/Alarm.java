@@ -24,6 +24,17 @@ public class Alarm extends Activity {
     boolean alarmSet = false;
     int alarmHour = 0;
     int alarmMinute = 0;
+    private static Alarm inst;
+
+    public static Alarm instance() {
+        return inst;
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        inst = this;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -118,5 +129,10 @@ public class Alarm extends Activity {
         savedInstanceState.putInt("AlarmMinute", alarmMinute);
 
         super.onSaveInstanceState(savedInstanceState);
+    }
+
+    public void toggleAlarmButton(boolean toggle){
+        ToggleButton toggleButton = findViewById(R.id.alarmToggle);
+        toggleButton.setChecked(toggle);
     }
 }
