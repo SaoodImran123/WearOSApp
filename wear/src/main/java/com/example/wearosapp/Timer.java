@@ -76,6 +76,7 @@ public class Timer extends Activity {
 
     private void runTimer()
     {
+        final int[] interval = {0};
 
         // Get the text view.
         final TextView timeText = (TextView)findViewById(R.id.timerText);
@@ -95,9 +96,13 @@ public class Timer extends Activity {
                 // If running is true, increment the
                 // seconds variable.
                 if (running) {
-                    seconds++;
+                    if (interval[0] % 10 == 0){
+                        seconds++;
+                    }
+                    interval[0]++;
+
                 }
-                handler.postDelayed(this, 1000);
+                handler.postDelayed(this, 100);
             }
         });
     }
